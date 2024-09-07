@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Patient Login</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-color: #fef2f2;
+        background: linear-gradient(to right, #fef2f2, #e4c2c1);
+        overflow-x: hidden;
+      }
+      nav {
+        background-color: #b6666f;
+        z-index: 50;
+        transition: opacity 0.5s;
+      }
+      nav.scrolled {
+        opacity: 0;
+      }
+      .form-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .form-control {
+        background-color: #ffffff;
+        box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+        width: 400px;
+        padding: 25px;
+        border-radius: 8px;
+      }
+      .form-control {
+        margin: 20px;
+        background-color: #ffffff;
+        box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+        width: 400px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        gap: 10px;
+        padding: 25px;
+        border-radius: 8px;
+      }
+      .title {
+        font-size: 28px;
+        color: #b6666f;
+        font-weight: 800;
+      }
+      .input-field {
+        position: relative;
+        width: 100%;
+      }
+      .input {
+        margin-top: 15px;
+        width: 100%;
+        outline: none;
+        border-radius: 8px;
+        height: 45px;
+        border: 1.5px solid #e4c2c1;
+        background: transparent;
+        padding-left: 10px;
+      }
+      .input:focus {
+        border: 1.5px solid #b6666f;
+      }
+      .input-field .label {
+        position: absolute;
+        top: 25px;
+        left: 15px;
+        color: #e4c2c1;
+        transition: all 0.3s ease;
+        pointer-events: none;
+        z-index: 2;
+      }
+      .input-field .input:focus ~ .label,
+      .input-field .input:valid ~ .label {
+        top: 5px;
+        left: 5px;
+        font-size: 12px;
+        color: #b6666f;
+        background-color: #ffffff;
+        padding-left: 5px;
+        padding-right: 5px;
+      }
+      .submit-btn {
+        margin-top: 30px;
+        height: 55px;
+        background: #f2f2f2;
+        border-radius: 11px;
+        border: 0;
+        outline: none;
+        color: #ffffff;
+        font-size: 18px;
+        font-weight: 700;
+        background: #b6666f;
+        box-shadow: 0px 0px 0px 0px #ffffff, 0px 0px 0px 0px #000000;
+        transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
+        cursor: pointer;
+      }
+
+      .submit-btn:hover {
+        box-shadow: 0px 0px 0px 2px #ffffff, 0px 0px 0px 4px #e4c2c1;
+      }
+
+      .pop {
+        color: #b6666f;
+      }
+      .pop:hover {
+        color: #000000;
+      }
+      .nav-link {
+        color: #fff;
+        text-decoration: none;
+        padding: 0 20px;
+        letter-spacing: 0.5px;
+        position: relative;
+        transition: 0.2s;
+        gap: 8px;
+      }
+
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -5px;
+        width: 0%;
+        height: 2px;
+        background-color: #312d2e;
+        transition: 0.3s linear;
+      }
+
+      .nav-link:hover {
+        color: #fff;
+      }
+
+      .nav-link:hover:after {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 w-full z-50">
+      <div class="container mx-auto flex justify-between items-center py-4">
+        <div class="flex items-center">
+          <img
+            src="./MQ.png"
+            alt="Logo"
+            class="h-8 mx-5"
+            style="border-radius: 16px"
+          />
+        </div>
+        <div class="hidden md:flex items-center">
+          <a href="./home.html" class="px-4 nav-link" style="color: #fef2f2"
+            >Home</a
+          >
+          <a href="./login.html" class="px-4 nav-link" style="color: #fef2f2"
+            >Patient Portal</a
+          >
+          <a href="./doclogin.jsp" class="px-4 nav-link" style="color: #fef2f2"
+            >Doctor Portal</a
+          >
+          <a href="./home.html" class="px-4 nav-link" style="color: #fef2f2"
+            >Contact</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <div class="form-container">
+      <form class="form-control" action="login" method="post">
+        <p class="title">Login</p>
+        <div class="input-field">
+          <input
+            required=""
+            class="input"
+            type="text"
+            name="username"
+            id="username"
+          />
+          <label class="label" for="input">Enter Username</label>
+        </div>
+        <div class="input-field">
+          <input
+            required=""
+            class="input"
+            type="password"
+            name="password"
+            id="password"
+          />
+          <label class="label" for="input">Enter Password</label>
+        </div>
+        <p style="color: #d6929a">
+          New user?
+          <a href="./signup.html" class="pop">Create an account!</a>
+        </p>
+        <button class="submit-btn">Sign In</button>
+        <p id="invalidusernamepass" style="color: red"></p>
+        <p id="usernotfound" style="color: red"></p>
+      </form>
+    </div>
+    <script>
+      window.onscroll = function () {
+        scrollFunction();
+      };
+
+      function scrollFunction() {
+        var nav = document.querySelector("nav");
+        if (
+          document.body.scrollTop > 50 ||
+          document.documentElement.scrollTop > 50
+        ) {
+          nav.classList.add("scrolled");
+        } else {
+          nav.classList.remove("scrolled");
+        }
+      }
+      document.addEventListener("DOMContentLoaded", function () {
+        // Function to get URL parameter by name
+        function getUrlParameter(name) {
+          name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+          var regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
+          var results = regex.exec(location.search);
+          return results === null
+            ? ""
+            : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+
+        // Get the username parameter from the URL
+        var username = getUrlParameter("username");
+
+        // Set the username input field value
+        document.getElementById("username").value = username;
+      });
+      const urlParams = new URLSearchParams(window.location.search);
+      const message = urlParams.get("message");
+
+      // Update the message placeholder if a message exists
+      if (message) {
+        document.getElementById("invalidusernamepass").textContent = message;
+      }
+
+      const urlParams1 = new URLSearchParams(window.location.search);
+      const messagenotfound = urlParams.get("messagenotfound");
+
+      // Update the message placeholder if a message exists
+      if (messagenotfound) {
+        document.getElementById("usernotfound").textContent = messagenotfound;
+      }
+    </script>
+  </body>
+</html>

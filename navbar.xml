@@ -1,0 +1,6 @@
+<navbar>
+    <link url="./home.html">Home</link>
+    <link url="./login.html">Patient Portal</link>
+    <link url="./doclogin.jsp">Doctor Portal</link>
+    <link url="#contact">Contact</link>
+</navbar>
